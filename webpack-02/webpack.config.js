@@ -8,6 +8,11 @@ module.exports = {
     entry: {
         index: './src/index.js',
     },
+    devServer:{
+        proxy:{
+            '/api':'http://localhost:3000'      //用于本地调试时的跨域问题
+        }
+    },
     watch: true, //持续打包，文件一发生变化就打包
     watchOptions: { //监控的选项
         poll: 1000, //刷新频率 每？毫秒监听一次
@@ -21,7 +26,7 @@ module.exports = {
     // devtool:"eval-source-map",
     // 不会产生列，但是一个单独的映射文件(  !!! 这一项我没有成功不能直接相信!!!)
     // devtool:"cheap-module-source-map",
-    // devtool:"cheap-module-eval-source-map",
+    devtool:"cheap-module-eval-source-map",
 
     output: {
         // [name]代表文件名
@@ -41,7 +46,7 @@ module.exports = {
                 to: './'
             }
         ]),
-        new webpack.BannerPlugin('write by hu')
+        new webpack.BannerPlugin('write by hu') //给所有打包出来的文件加上版权信息
     ],
     module: {
         rules: [{

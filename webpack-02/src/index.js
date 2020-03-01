@@ -7,4 +7,10 @@
 const a = new A; */
 const xhr = new XMLHttpRequest();
 
-xhr.open()
+xhr.open('GET','/api/user',true);
+
+xhr.onload = function(){
+    console.log(xhr.response);
+}
+
+xhr.send();
