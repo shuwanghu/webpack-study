@@ -2,9 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const webpack = require('webpack')
+const webpack = require('webpack');
+
 module.exports = {
-    mode: 'production',
     entry: {
         index: './src/index.js',
     },
@@ -30,6 +30,11 @@ module.exports = {
                 }
             }
         } */
+    },
+    resolve:{
+        // 指定第三方模块存放位置
+    //   modules:[path.resolve],
+    //   alisa
     },
     watch: true, //持续打包，文件一发生变化就打包
     watchOptions: { //监控的选项
@@ -64,7 +69,7 @@ module.exports = {
                 to: './'
             }
         ]),
-        new webpack.BannerPlugin('write by hu') //给所有打包出来的文件加上版权信息
+        new webpack.BannerPlugin('write by hu'), //给所有打包出来的文件加上版权信息
     ],
     module: {
         rules: [{
