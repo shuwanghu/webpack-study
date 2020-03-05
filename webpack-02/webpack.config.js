@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack')
 module.exports = {
@@ -8,10 +8,28 @@ module.exports = {
     entry: {
         index: './src/index.js',
     },
-    devServer:{
-        proxy:{
-            '/api':'http://localhost:3000'      //用于本地调试时的跨域问题
-        }
+    resolve:{
+
+    },
+    devServer: {
+        //在服务端中启动webpack 与服务端共用一个端口(写法见server.js)
+
+        /* //纯前端 模拟数据
+        before(app){   //钩子
+            // 这个app等同于 express()的返回值
+            app.get('/user', (req, res) => {
+                res.json({ 'name': 'hu' })
+            })
+        }, */
+        /* //用于解决本地调试时的跨域问题
+        proxy: {
+            '^/api': {
+                target: 'http://localhost:3000',
+                pathRewrite: {
+                    '^/api': ''           // 将开头为/api的请求中的 /api 替换为空字符串
+                }
+            }
+        } */
     },
     watch: true, //持续打包，文件一发生变化就打包
     watchOptions: { //监控的选项
@@ -26,7 +44,7 @@ module.exports = {
     // devtool:"eval-source-map",
     // 不会产生列，但是一个单独的映射文件(  !!! 这一项我没有成功不能直接相信!!!)
     // devtool:"cheap-module-source-map",
-    devtool:"cheap-module-eval-source-map",
+    devtool: "cheap-module-eval-source-map",
 
     output: {
         // [name]代表文件名
