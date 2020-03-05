@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack')
 
 module.exports = {
@@ -32,10 +33,14 @@ module.exports = {
         }]
     },
     plugins: [
+        new CleanWebpackPlugin(),
+        new CopyPlugin([{from:'react',to:"react"}]),
+        new webpack.DllReferencePlugin({
+            manifest:path.resolve(__dirname,'react','manifest.json')
+        }),
         new webpack.IgnorePlugin(/\.\/locale/,/moment/),
         new HtmlWebpackPlugin({
             template: './public/index.html'
         }),
-        new CleanWebpackPlugin(),
     ]
 }
