@@ -1,9 +1,16 @@
 const path = require('path')
-const HtmlWebpacPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const webpack = require('webpack')
+
 module.exports = {
     mode: "production",
     entry: './src/index',
+    devServer:{
+        port:3000,
+        // open:true,
+        // contentBase:'./server'
+    },
     output: {
         filename: 'index.[hash:8].js',
         path: path.resolve(__dirname, 'build')
@@ -26,8 +33,9 @@ module.exports = {
     },
     plugins: [
         new webpack.IgnorePlugin(/\.\/locale/,/moment/),
-        new HtmlWebpacPlugin({
+        new HtmlWebpackPlugin({
             template: './public/index.html'
         }),
+        new CleanWebpackPlugin(),
     ]
 }
