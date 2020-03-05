@@ -9,7 +9,7 @@ module.exports = {
         index: './src/index.js',
     },
     resolve:{
-
+        
     },
     devServer: {
         //在服务端中启动webpack 与服务端共用一个端口(写法见server.js)
