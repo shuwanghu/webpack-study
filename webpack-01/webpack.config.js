@@ -103,7 +103,8 @@ module.exports = {
             },
             {
                 test: /\.(less|css)$/,
-                use: [{
+                use: [
+                    {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             publicPath: '../'
@@ -117,7 +118,12 @@ module.exports = {
                         }
                     } */
                     , 'css-loader' //css-loader 解析 @import这种语法
-                    , 'postcss-loader' //添加浏览器前缀
+                    , {
+                        loader: 'postcss-loader',   //添加浏览器前缀，需要
+                        options: {
+                            plugins: [require('autoprefixer')]
+                        }
+                    }
                     , 'less-loader' //将less转化为css
                 ]
             }

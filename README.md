@@ -31,7 +31,7 @@
 - webpack运行在node环境下；  
 -  webpack可以通过npm或yarn下载；  
 - 如果希望在命令行中执行webpack命令，需要安装webpack-cli，也是通过npm或yarn（后续所有安装都是通过npm或yarn的，不在累赘）；  
-- webpack运行完毕后在指定目录(后续会讲如何指定目录)生成打包后的文件，自带模块化支持；  
+- webpack运行完毕后在指定目录（后续会讲如何指定目录）生成打包后的文件，自带模块化支持；  
 - webpack在没有配置的情况下也可以运行，但是功能比较弱；  
     - 默认输入文件为`./src/index.js`
     - 默认输出地址为`./dist`
@@ -110,6 +110,7 @@
     - `port`：端口号，
     - `contentBase`：修改服务器的指向，是当前目录的相对路径
     - `progress`：显示打包进度
+    - `compress`：gzip压缩
 
 
 
@@ -117,6 +118,7 @@
 ### 基础知识
 1. 所有的插件都需要安装后引入
 2. 插件是对打包的整体做调整（<font color=red>自己的总结不是定义</font>）
+3. 插件使用顺序不分先后（<font color=red>视频中说的，但是偶认为存疑</font>）
 ### 基础使用方法
 ```javascript
 const Plugin = require('plugin')
@@ -205,10 +207,20 @@ module.exports={
 }
 ```
 ### 常用loader
-- `css-loader`：用来帮助webpack解析 css 文件及 css 文件间@import的引用
-- `less-loader`：用来帮助webpack解析 .less文件及 .less 文件之间@import的引用
-  - 安装时要一并安装less less-loader依赖less解析 .less 文件
-- `postcss-loader`：用来给css加上浏览器前缀
-- `style-loader`：将css以style标签的形式插入index中（<font color=red>不推荐，会让index变的很大</font>）
+- `css-loader`：用来帮助webpack解析 `.css` 文件及 `.css` 文件间@import的引用
+- `less-loader`：用来帮助webpack解析 `.less`文件及 `.less` 文件之间@import的引用
+  - 安装时要一并安装 `less` `less-loader`依赖`less`解析 `.less` 文件
+- `postcss-loader`：可以配合autoprefix用来给css加上浏览器前缀
+  - 安装时要同时安装`post-loader`和`autoprefixer`
+  - 用法：
+  ```javascript
+  {
+    loader: 'postcss-loader',   //配合autoprefix添加浏览器前缀
+    options: {
+        plugins: [require('autoprefixer')]
+    }
+  }
+  ```
+- `style-loader`：将css以style标签的形式插入index中（<font color=red>不推荐，可能会让index变的很大</font>）
   - `insert`: 插入标签位置，可以用这个选项来控制插入css的优先级
 - 
