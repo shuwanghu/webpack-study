@@ -1,0 +1,42 @@
+Arguments: 
+  /usr/local/bin/node /Users/macbook/.yarn/bin/yarn.js add Loader -D
+
+PATH: 
+  /Users/macbook/Library/flutter/bin:/Users/macbook/.cargo/bin:/Users/macbook/.yarn/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/macbook/Library/flutter/bin:/Users/macbook/.cargo/bin:/Users/macbook/.yarn/bin
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  12.16.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.npm.taobao.org/Loader: Not found
+      at Request.params.callback [as _callback] (/Users/macbook/.yarn/lib/cli.js:66947:18)
+      at Request.self.callback (/Users/macbook/.yarn/lib/cli.js:140665:22)
+      at Request.emit (events.js:311:20)
+      at Request.<anonymous> (/Users/macbook/.yarn/lib/cli.js:141637:10)
+      at Request.emit (events.js:311:20)
+      at IncomingMessage.<anonymous> (/Users/macbook/.yarn/lib/cli.js:141559:12)
+      at Object.onceWrapper (events.js:417:28)
+      at IncomingMessage.emit (events.js:323:22)
+      at endReadableNT (_stream_readable.js:1204:12)
+      at processTicksAndRejections (internal/process/task_queues.js:84:21)
+
+npm manifest: 
+  {
+    "name": "webpack-practice",
+    "version": "1.0.0",
+    "author": "laohu",
+    "license": "MIT",
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
