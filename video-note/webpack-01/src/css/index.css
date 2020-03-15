@@ -2,6 +2,6 @@
 @import './picture.css';
 @import './a.less';
 body {
-    /* transform: rotate(30deg); */
+    transform: rotate(30deg);
     background: red;
 }
