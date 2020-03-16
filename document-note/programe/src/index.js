@@ -1,10 +1,13 @@
 import _ from 'lodash';
-import './css/index.css'
+import print from './print'
 
 function component() {
-  var element = document.createElement('div');
+  var element = document.createElement('button');
 
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+  element.innerHTML = 'click';
+  element.onclick=()=>{
+    print()
+  }
 
   return element;
 }

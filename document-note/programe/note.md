@@ -1,0 +1,1 @@
+style-loader不是直接将样式写在index.html中，而是生成相应的js，在运行时将style插入html
